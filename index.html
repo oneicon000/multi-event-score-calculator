@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Multi-Event Score Calculator</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2563eb">
+
 </head>
 <body>
   <!-- Main Menu -->
@@ -35,5 +38,13 @@
 
   <script src="data.js"></script>
   <script src="script.js"></script>
+
+  <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js");
+  }
+  </script>
+
 </body>
 </html>
+
