@@ -1,0 +1,106 @@
+/* style.css */
+
+/* Reset & base styles */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f9fafb;
+  color: #222;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Container */
+#menu, #eventPage {
+  max-width: 700px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Headings */
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+h2 {
+  margin: 1rem 0;
+}
+h3 {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+}
+
+/* Buttons */
+button {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0.5rem auto;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+button:hover {
+  background: #1d4ed8;
+}
+
+/* Back button */
+#eventPage button:first-of-type {
+  background: #6b7280;
+}
+#eventPage button:first-of-type:hover {
+  background: #4b5563;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+thead {
+  background: #2563eb;
+  color: white;
+}
+th, td {
+  padding: 0.7rem;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Input boxes */
+input[type="number"] {
+  width: 90px;
+  padding: 0.3rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* Total score */
+#totalScore {
+  font-weight: bold;
+  color: #2563eb;
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  h1 { font-size: 1.4rem; }
+  button { font-size: 0.9rem; padding: 0.7rem; }
+  th, td { padding: 0.5rem; font-size: 0.9rem; }
+  input[type="number"] { width: 70px; }
+}

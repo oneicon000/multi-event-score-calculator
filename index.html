@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Event Score Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Main Menu -->
+  <div id="menu">
+    <h1>Multi-Event Score Calculator</h1>
+    <button onclick="loadEvent('decathlonMen')">Men's Decathlon</button>
+    <button onclick="loadEvent('heptathlonMenIndoor')">Men's Indoor Heptathlon</button>
+    <button onclick="loadEvent('heptathlonWomen')">Women's Heptathlon</button>
+    <button onclick="loadEvent('pentathlonWomenIndoor')">Women's Indoor Pentathlon</button>
+  </div>
+
+  <!-- Event Page Template (hidden until chosen) -->
+  <div id="eventPage" style="display:none;">
+    <button onclick="goBack()">← Back</button>
+    <h2 id="eventTitle"></h2>
+    <table id="eventTable">
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>Performance</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody id="eventBody"></tbody>
+    </table>
+    <h3>Total Score: <span id="totalScore">0</span></h3>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
