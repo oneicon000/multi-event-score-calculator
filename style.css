@@ -104,3 +104,11 @@ input[type="number"] {
   th, td { padding: 0.5rem; font-size: 0.9rem; }
   input[type="number"] { width: 70px; }
 }
+
+#lastUpdated {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-align: center;
+}
+
