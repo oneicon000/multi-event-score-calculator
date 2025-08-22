@@ -105,10 +105,17 @@ input[type="number"] {
   input[type="number"] { width: 70px; }
 }
 
-#lastUpdated {
-  margin-top: 2rem;
-  font-size: 0.8rem;
-  color: #6b7280;
+footer {
   text-align: center;
+  margin-top: 2rem;
+  padding: 1rem 0;
 }
+
+#lastUpdated {
+  font-size: 0.8rem;
+  color: #6b7280; /* gray */
+}
+
+
+
 
