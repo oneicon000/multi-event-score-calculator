@@ -12,19 +12,25 @@ function loadEvent(key) {
   config.events.forEach((ev, idx) => {
     const row = document.createElement("tr");
 
+    // Event name
     const eventCell = document.createElement("td");
     eventCell.innerText = ev.name;
     row.appendChild(eventCell);
 
+    // Input field
     const perfCell = document.createElement("td");
     const input = document.createElement("input");
-    input.type = "number";
-    input.step = "any";
-    input.oninput = () => updateScores(config);
+    input.type = "text"; // text so we can format freely
+    input.oninput = () => {
+      formatInput(input, ev.format);
+      updateScores(config);
+    };
     input.dataset.index = idx;
+    input.dataset.format = ev.format;
     perfCell.appendChild(input);
     row.appendChild(perfCell);
 
+    // Score cell
     const scoreCell = document.createElement("td");
     scoreCell.innerText = "0";
     scoreCell.className = "score";
@@ -48,7 +54,9 @@ function updateScores(config) {
     const input = row.querySelector("input");
     const scoreCell = row.querySelector(".score");
 
-    const val = parseFloat(input.value);
+    const raw = input.value;
+    let val = parsePerformance(raw, ev.format);
+
     if (!isNaN(val)) {
       const score = calculateScore(ev, val);
       scoreCell.innerText = score;
@@ -70,5 +78,66 @@ function calculateScore(ev, value) {
   } else if (ev.type === "throw") {
     P = ev.a * Math.pow(value - ev.b, ev.c);
   }
-  return Math.floor(P);
+  return Math.floor(P > 0 ? P : 0);
+}
+
+/* ------------------------
+   Input Formatting Helpers
+------------------------ */
+
+// Auto-format while typing
+function formatInput(input, format) {
+  let digits = input.value.replace(/\D/g, ""); // keep only numbers
+
+  if (format === "ss.xx" || format === "s.xx") {
+    if (digits.length >= 3) {
+      input.value = digits.slice(0, -2) + "." + digits.slice(-2);
+    } else {
+      input.value = digits;
+    }
+  }
+
+  if (format === "m.xx") {
+    if (digits.length >= 3) {
+      input.value = digits.slice(0, -2) + "." + digits.slice(-2);
+    } else {
+      input.value = digits;
+    }
+  }
+
+  if (format === "M:SS.xx") {
+    if (digits.length >= 5) {
+      const min = digits.slice(0, digits.length - 4);
+      const sec = digits.slice(-4, -2);
+      const hund = digits.slice(-2);
+      input.value = min + ":" + sec + "." + hund;
+    } else if (digits.length >= 3) {
+      // At least seconds and hundredths
+      const sec = digits.slice(0, -2);
+      const hund = digits.slice(-2);
+      input.value = "0:" + sec.padStart(2, "0") + "." + hund;
+    } else {
+      input.value = digits;
+    }
+  }
+}
+
+// Convert formatted string → numeric seconds/meters
+function parsePerformance(str, format) {
+  if (!str) return NaN;
+
+  if (format === "ss.xx" || format === "s.xx" || format === "m.xx") {
+    return parseFloat(str);
+  }
+
+  if (format === "M:SS.xx") {
+    const match = str.match(/(\d+):(\d{2})\.(\d{2})/);
+    if (!match) return NaN;
+    const min = parseInt(match[1]);
+    const sec = parseInt(match[2]);
+    const hund = parseInt(match[3]);
+    return min * 60 + sec + hund / 100;
+  }
+
+  return NaN;
 }
