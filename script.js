@@ -20,7 +20,7 @@ function loadEvent(key) {
     // Input field
     const perfCell = document.createElement("td");
     const input = document.createElement("input");
-    input.type = "text"; // text so we can format freely
+    input.type = "number"; // text so we can format freely
     input.oninput = () => {
       formatInput(input, ev.format);
       updateScores(config);
@@ -157,4 +157,5 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
