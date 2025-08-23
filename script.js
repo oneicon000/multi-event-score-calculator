@@ -43,6 +43,10 @@ function loadEvent(key) {
 function goBack() {
   document.getElementById("menu").style.display = "block";
   document.getElementById("eventPage").style.display = "none";
+
+  // Reset score + clear table
+  document.getElementById("totalScore").innerText = "0";
+  document.getElementById("eventBody").innerHTML = "";
 }
 
 function updateScores(config) {
@@ -162,6 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
 
