@@ -89,15 +89,17 @@ function calculateScore(ev, value) {
 function formatInput(input, format) {
   let digits = input.value.replace(/\D/g, ""); // keep only numbers
 
-  if (format === "ss.xx" || format === "s.xx") {
-    if (digits.length >= 3) {
-      input.value = digits.slice(0, -2) + "." + digits.slice(-2);
-    } else {
-      input.value = digits;
-    }
-  }
+  // Enforce max digits
+  let maxDigits = 99; // fallback
+  if (format === "s.xx") maxDigits = 3;
+  if (format === "m.xx") maxDigits = 3;
+  if (format === "ss.xx") maxDigits = 4;
+  if (format === "M:SS.xx") maxDigits = 5;
 
-  if (format === "m.xx") {
+  digits = digits.slice(0, maxDigits); // trim if too long
+  
+  // Apply format
+  if (format === "ss.xx" || format === "s.xx" || format === "m.xx") {
     if (digits.length >= 3) {
       input.value = digits.slice(0, -2) + "." + digits.slice(-2);
     } else {
@@ -159,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
 
 
