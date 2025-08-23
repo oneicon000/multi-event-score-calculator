@@ -1,11 +1,23 @@
-/* style.css */
+/* Define color variables */
+:root {
+  --bg-color: #88888D;
+  --text-color: #222;
+  --accent: #571b69;
+  --accent-hover: #6e2286;
+  --neutral-dark: #6b7280;
+  --neutral-dark-hover: #4b5563;
+  --table-bg: #ffffff;
+  --table-alt-row: #f0eaf3;
+  --table-border: #e5e7eb;
+  --footer-text: #6b7280;
+}
 
 /* Reset & base styles */
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #88888D;        /* softer background */
-  color: #222;
+  background: var(--bg-color);
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   padding: 1rem;
@@ -29,19 +41,19 @@ main {
 
 /* Headings */
 h1 {
-  font-size: 2rem;           /* bumped up */
+  font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: #571b69;            /* accent */
+  color: var(--accent);
 }
 h2 {
   margin: 1rem 0;
-  font-size: 1.6rem;         /* larger */
-  color: #571b69;
+  font-size: 1.6rem;
+  color: var(--accent);
 }
 h3 {
   margin-top: 1rem;
   font-size: 1.3rem;
-  color: #571b69;
+  color: var(--accent);
 }
 
 /* Buttons */
@@ -50,26 +62,26 @@ button {
   width: 100%;
   max-width: 400px;
   margin: 0.5rem auto;
-  padding: 0.9rem;           /* more padding */
-  font-size: 1.1rem;         /* bigger text */
+  padding: 0.9rem;
+  font-size: 1.1rem;
   border: none;
   border-radius: 10px;
-  background: #571b69;       /* accent */
+  background: var(--accent);
   color: white;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.1s ease;
 }
 button:hover {
-  background: #6e2286;
+  background: var(--accent-hover);
   transform: translateY(-2px);
 }
 
 /* Back button */
 #eventPage button:first-of-type {
-  background: #6b7280;
+  background: var(--neutral-dark);
 }
 #eventPage button:first-of-type:hover {
-  background: #4b5563;
+  background: var(--neutral-dark-hover);
 }
 
 /* Table */
@@ -77,23 +89,23 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
-  background: white;
+  background: var(--table-bg);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 thead {
-  background: #571b69;       /* accent */
+  background: var(--accent);
   color: white;
 }
 th, td {
-  padding: 0.8rem;           /* bigger spacing */
+  padding: 0.8rem;
   text-align: center;
-  border-bottom: 1px solid #e5e7eb;
-  font-size: 1.05rem;        /* slightly bigger */
+  border-bottom: 1px solid var(--table-border);
+  font-size: 1.05rem;
 }
 tbody tr:nth-child(even) {
-  background: #f0eaf3;       /* subtle purple tint */
+  background: var(--table-alt-row);
 }
 tbody tr:last-child td {
   border-bottom: none;
@@ -101,9 +113,9 @@ tbody tr:last-child td {
 
 /* Input boxes */
 input[type="tel"] {
-  width: 100px;              /* a bit wider */
+  width: 100px;
   padding: 0.4rem;
-  font-size: 1.05rem;        /* larger text */
+  font-size: 1.05rem;
   border: 1px solid #d1d5db;
   border-radius: 6px;
   text-align: center;
@@ -112,8 +124,8 @@ input[type="tel"] {
 /* Total score */
 #totalScore {
   font-weight: bold;
-  color: #571b69;            /* accent */
-  font-size: 1.2rem;         /* bigger */
+  color: var(--accent);
+  font-size: 1.2rem;
 }
 
 /* Mobile tweaks */
@@ -132,7 +144,5 @@ footer {
 
 #lastUpdated {
   font-size: 0.85rem;
-  color: #6b7280; /* gray */
+  color: var(--footer-text);
 }
-
-
