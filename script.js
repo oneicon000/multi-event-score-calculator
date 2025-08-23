@@ -146,9 +146,23 @@ function parsePerformance(str, format) {
   return NaN;
 }
 
-
+// Set "Last Updated" footer automatically
+document.addEventListener("DOMContentLoaded", () => {
+  const el = document.getElementById("lastUpdated");
+  if (el) {
+    const modified = new Date(document.lastModified);
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit"
+    };
+    el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
+  }
 
 });
+
 
 
 
