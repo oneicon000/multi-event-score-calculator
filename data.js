@@ -27,7 +27,7 @@ const eventConfigs = {
   heptathlonMenIndoor: {
     title: "Men's Indoor Heptathlon",
     events: [
-      { name: "60m", type: "track", format: "ss.xx", a: 58.0150, b: 11.5, c: 1.81 },
+      { name: "60m", type: "track", format: "s.xx", a: 58.0150, b: 11.5, c: 1.81 },
       { name: "Long Jump", type: "jump", format: "m.xx", a: 0.14354, b: 220.0, c: 1.40 },
       { name: "Shot Put", type: "throw", format: "ss.xx", a: 51.39, b: 1.50, c: 1.05 },
       { name: "High Jump", type: "jump", format: "m.xx", a: 0.8465, b: 75.0, c: 1.42 },
@@ -67,4 +67,5 @@ const eventConfigs = {
     ]
   }
 };
+
 
