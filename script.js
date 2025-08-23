@@ -106,20 +106,22 @@ function formatInput(input, format) {
   }
 
   if (format === "M:SS.xx") {
-    if (digits.length >= 5) {
-      const min = digits.slice(0, digits.length - 4);
-      const sec = digits.slice(-4, -2);
-      const hund = digits.slice(-2);
-      input.value = min + ":" + sec + "." + hund;
-    } else if (digits.length >= 3) {
-      // At least seconds and hundredths
-      const sec = digits.slice(0, -2);
-      const hund = digits.slice(-2);
-      input.value = "0:" + sec.padStart(2, "0") + "." + hund;
-    } else {
-      input.value = digits;
-    }
+  if (digits.length >= 5) {
+    // Full M:SS.xx
+    const min = digits.slice(0, digits.length - 4);
+    const sec = digits.slice(-4, -2);
+    const hund = digits.slice(-2);
+    input.value = min + ":" + sec + "." + hund;
+  } else if (digits.length >= 3) {
+    // Only seconds + hundredths so far
+    const sec = digits.slice(0, -2);
+    const hund = digits.slice(-2);
+    input.value = sec + "." + hund;  // 👈 show as SS.xx until minutes appear
+  } else {
+    input.value = digits;
   }
+}
+  
 }
 
 // Convert formatted string → numeric seconds/meters
@@ -157,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
 
 
