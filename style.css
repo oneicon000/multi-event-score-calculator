@@ -22,7 +22,7 @@ body {
   justify-content: center;
   padding: 1rem;
   flex-direction: column;   
-  min-height: 92vh;        
+  min-height: 90vh;        
 }
 
 main {
@@ -43,7 +43,7 @@ main {
 h1 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: var(--accent);
+  color: F7F2FA; /*white titles*/
 }
 h2 {
   margin: 1rem 0;
@@ -146,3 +146,4 @@ footer {
   font-size: 0.85rem;
   color: var(--footer-text);
 }
+
