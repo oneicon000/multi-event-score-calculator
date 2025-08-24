@@ -2,20 +2,20 @@
 :root {
   --bg-color: #88888D;         /* Main page background */
   --text-color: #222;          /* Default text color (body text, table cells, etc.) */
-  --title-color: #F6F3F7;      /* Titles (hopefully)*/
 
   --accent: #571b69;           /* Main accent color (titles, buttons, table header, total score) */
   --accent-hover: #6e2286;     /* Hover state for accent buttons */
 
-  --neutral-dark: #571b69;     /* Back button color */
+  --neutral-dark: #6b7280;     /* Back button color */
   --neutral-dark-hover: #4b5563; /* Back button hover color */
 
   --table-bg: #ffffff;         /* Table background */
   --table-alt-row: #f0eaf3;    /* Alternating row background inside tables */
   --table-border: #e5e7eb;     /* Table row border lines */
 
-  --footer-text: #0F1010;      /* Footer "last updated" text */
+  --footer-text: #6b7280;      /* Footer "last updated" text */
 }
+
 
 /* Reset & base styles */
 body {
@@ -27,7 +27,7 @@ body {
   justify-content: center;
   padding: 1rem;
   flex-direction: column;   
-  min-height: 90vh;        
+  min-height: 92vh;        
 }
 
 main {
@@ -48,17 +48,17 @@ main {
 h1 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: var(--title-color); /*white titles*/
+  color: var(--accent);
 }
 h2 {
   margin: 1rem 0;
   font-size: 1.6rem;
-  color: var(--title-color);
+  color: var(--accent);
 }
 h3 {
   margin-top: 1rem;
   font-size: 1.3rem;
-  color: var(--title-color);
+  color: var(--accent);
 }
 
 /* Buttons */
@@ -129,7 +129,7 @@ input[type="tel"] {
 /* Total score */
 #totalScore {
   font-weight: bold;
-  color: var(--title-color);
+  color: var(--accent);
   font-size: 1.2rem;
 }
 
@@ -151,6 +151,3 @@ footer {
   font-size: 0.85rem;
   color: var(--footer-text);
 }
-
-
-
