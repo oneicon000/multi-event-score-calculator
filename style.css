@@ -2,7 +2,7 @@
 :root {
   --bg-color: #88888D;         /* Main page background */
   --text-color: #222;          /* Default text color (body text, table cells, etc.) */
-  --title-color: #F6F3F7;      /* Titles (hopefully)
+  --title-color: #F6F3F7;      /* Titles (hopefully)*/
 
   --accent: #571b69;           /* Main accent color (titles, buttons, table header, total score) */
   --accent-hover: #6e2286;     /* Hover state for accent buttons */
@@ -151,5 +151,6 @@ footer {
   font-size: 0.85rem;
   color: var(--footer-text);
 }
+
 
 
