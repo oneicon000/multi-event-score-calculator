@@ -2,6 +2,7 @@
 :root {
   --bg-color: #88888D;         /* Main page background */
   --text-color: #222;          /* Default text color (body text, table cells, etc.) */
+  --title-color: #F3EEF5;
 
   --accent: #571b69;           /* Main accent color (titles, buttons, table header, total score) */
   --accent-hover: #6e2286;     /* Hover state for accent buttons */
@@ -48,7 +49,7 @@ main {
 h1 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: var(--accent);
+  color: var(--title-color);
 }
 h2 {
   margin: 1rem 0;
@@ -129,7 +130,7 @@ input[type="tel"] {
 /* Total score */
 #totalScore {
   font-weight: bold;
-  color: var(--accent);
+  color: var(--title-color);
   font-size: 1.2rem;
 }
 
@@ -151,3 +152,4 @@ footer {
   font-size: 0.85rem;
   color: var(--footer-text);
 }
+
