@@ -1,6 +1,6 @@
 /* Define color variables */
 :root {
-  --bg-color: #88888D;         /* Main page background */
+  --bg-color: #6D6D6F;         /* Main page background */
   --text-color: #222;          /* Default text color (body text, table cells, etc.) */
   --title-color: #F3EEF5;
 
@@ -154,6 +154,7 @@ footer {
   font-size: 0.85rem;
   color: var(--footer-text);
 }
+
 
 
 
