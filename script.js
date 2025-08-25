@@ -174,6 +174,15 @@ function formatInput(input, format) {
       input.value = digits;
     }
   }
+
+// After formatting... FOR THE AUTO CHANGE OF FOCUS
+if (digits.length >= maxDigits) {
+  const currentIndex = parseInt(input.dataset.index, 10);
+  const nextInput = document.querySelector(`input[data-index="${currentIndex + 1}"]`);
+  if (nextInput) {
+    nextInput.focus();
+  }
+}//------------------------------------------------  
 }
 
 function parsePerformance(str, format) {
@@ -210,6 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
 
 
