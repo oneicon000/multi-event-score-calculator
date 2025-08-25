@@ -24,23 +24,44 @@ function loadEvent(key) {
     const perfCell = document.createElement("td");
     const input = document.createElement("input");
     input.type = "tel";
+
+    // Score cell (define it BEFORE using in handler)
+    const scoreCell = document.createElement("td");
+    scoreCell.innerText = "0";
+    scoreCell.className = "score";
+
+    // Input handler
     input.oninput = () => {
       formatInput(input, ev.format);
-      updateScores(currentEventType); // pass event type string
+
+      // Parse performance into numeric
+      const value = parsePerformance(input.value, ev.format);
+
+      // Calculate score
+      const score = calculateScore(ev, value);
+
+      // Update this row's score cell
+      scoreCell.textContent = score;
+
+      // Update totals (day1/day2/overall)
+      updateScores(currentEventType);
     };
+
     input.dataset.index = idx;
     input.dataset.format = ev.format;
     perfCell.appendChild(input);
     row.appendChild(perfCell);
 
-    // Score cell
-    const scoreCell = document.createElement("td");
-    scoreCell.innerText = "0";
-    scoreCell.className = "score";
+    // Append score cell
     row.appendChild(scoreCell);
 
     tbody.appendChild(row);
   });
+
+  // Reset scores when event loads
+  updateScores(currentEventType);
+}
+
 
   // Reset scores when event loads
   updateScores(currentEventType);
@@ -178,3 +199,4 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
