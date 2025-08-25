@@ -47,35 +47,14 @@ function loadEvent(key) {
     input.dataset.index = idx;
     input.dataset.format = ev.format;
 
-    // Append
+    // Append cells
     perfCell.appendChild(input);
     row.appendChild(perfCell);
     row.appendChild(scoreCell);
     tbody.appendChild(row);
   });
 
-  // Reset totals
-  updateScores(currentEventType);
-}
-
-
-    input.dataset.index = idx;
-    input.dataset.format = ev.format;
-    perfCell.appendChild(input);
-    row.appendChild(perfCell);
-
-    // Append score cell
-    row.appendChild(scoreCell);
-
-    tbody.appendChild(row);
-  });
-
-  // Reset scores when event loads
-  updateScores(currentEventType);
-}
-
-
-  // Reset scores when event loads
+  // Reset totals when event loads
   updateScores(currentEventType);
 }
 
@@ -211,5 +190,3 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
-
-
