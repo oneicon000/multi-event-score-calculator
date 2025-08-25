@@ -1,6 +1,6 @@
 /* Define color variables */
 :root {
-  --bg-color: #6D6D6F;         /* Main page background */
+  --bg-color: #59595A;         /* Main page background */
   --text-color: #222;          /* Default text color (body text, table cells, etc.) */
   --title-color: #F3EEF5;
 
@@ -56,10 +56,10 @@ h2 {
   font-size: 1.6rem;
   color: var(--title-color);
 }
-h3 {
+h3 { /*total score text */
   margin-top: 1rem;
   font-size: 1.3rem;
-  color: var(--accent);
+  color: var(--title-color);
 }
 
 /* Buttons */
@@ -154,6 +154,7 @@ footer {
   font-size: 0.85rem;
   color: var(--footer-text);
 }
+
 
 
 
