@@ -112,7 +112,7 @@ tbody tr:last-child td {
 }
 
 /* Input boxes */
-input[type="tel"] {
+input[type="number"] {
   width: 100px;
   padding: 0.4rem;
   font-size: 1.05rem;
@@ -154,6 +154,7 @@ footer {
   font-size: 0.85rem;
   color: var(--footer-text);
 }
+
 
 
 
