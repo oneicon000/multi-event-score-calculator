@@ -2,6 +2,18 @@
 
 let currentEventType = null;
 
+// to help hide the day scores for the pent
+function setDayScoreVisibility(show) {
+  const d1 = document.getElementById("day1Score");
+  const d2 = document.getElementById("day2Score");
+  if (!d1 || !d2) return;
+
+  const display = show ? "" : "none"; // "" lets CSS/layout decide (block)
+  d1.style.display = display;
+  d2.style.display = display;
+}
+
+
 function loadEvent(key) {
   currentEventType = key;  // store which event is active
   const config = eventConfigs[key];
@@ -10,6 +22,9 @@ function loadEvent(key) {
   document.getElementById("menu").style.display = "none";
   document.getElementById("eventPage").style.display = "block";
   document.getElementById("eventTitle").innerText = config.title;
+
+  // Hide day scores for pentathlon; show for others
+  setDayScoreVisibility(key !== "pentathlonWomenIndoor");
 
   // Clear table
   const tbody = document.getElementById("eventBody");
@@ -190,3 +205,4 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
