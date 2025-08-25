@@ -5,13 +5,17 @@ let currentEventType = null;
 function loadEvent(key) {
   currentEventType = key;  // store which event is active
   const config = eventConfigs[key];
+
+  // Show/hide pages
   document.getElementById("menu").style.display = "none";
   document.getElementById("eventPage").style.display = "block";
   document.getElementById("eventTitle").innerText = config.title;
 
+  // Clear table
   const tbody = document.getElementById("eventBody");
   tbody.innerHTML = "";
 
+  // Build event rows
   config.events.forEach((ev, idx) => {
     const row = document.createElement("tr");
 
@@ -20,12 +24,12 @@ function loadEvent(key) {
     eventCell.innerText = ev.name;
     row.appendChild(eventCell);
 
-    // Input field
+    // Input cell
     const perfCell = document.createElement("td");
     const input = document.createElement("input");
     input.type = "tel";
 
-    // Score cell (define it BEFORE using in handler)
+    // Score cell
     const scoreCell = document.createElement("td");
     scoreCell.innerText = "0";
     scoreCell.className = "score";
@@ -33,19 +37,27 @@ function loadEvent(key) {
     // Input handler
     input.oninput = () => {
       formatInput(input, ev.format);
-
-      // Parse performance into numeric
       const value = parsePerformance(input.value, ev.format);
-
-      // Calculate score
       const score = calculateScore(ev, value);
-
-      // Update this row's score cell
       scoreCell.textContent = score;
-
-      // Update totals (day1/day2/overall)
       updateScores(currentEventType);
     };
+
+    // Store metadata
+    input.dataset.index = idx;
+    input.dataset.format = ev.format;
+
+    // Append
+    perfCell.appendChild(input);
+    row.appendChild(perfCell);
+    row.appendChild(scoreCell);
+    tbody.appendChild(row);
+  });
+
+  // Reset totals
+  updateScores(currentEventType);
+}
+
 
     input.dataset.index = idx;
     input.dataset.format = ev.format;
@@ -199,4 +211,5 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
