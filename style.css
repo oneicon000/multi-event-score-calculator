@@ -155,6 +155,12 @@ footer {
   color: var(--footer-text);
 }
 
+#day1Score, #day2Score {
+  font-size: 1rem;
+  color: var(--title-color);   /* same as titles so it’s visible */
+  margin: 0.2rem 0;
+}
+
 
 
 
