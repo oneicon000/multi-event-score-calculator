@@ -174,16 +174,6 @@ function formatInput(input, format) {
       input.value = digits;
     }
   }
-
-  // NEW FEATURE: Auto-focus to the next input field
-  const currentDigits = input.value.replace(/\D/g, "").length;
-  if (currentDigits === maxDigits) {
-    const currentIndex = parseInt(input.dataset.index);
-    const nextInput = document.querySelector(`input[data-index="${currentIndex + 1}"]`);
-    if (nextInput) {
-      nextInput.focus();
-    }
-  }
 }
 
 function parsePerformance(str, format) {
@@ -220,6 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
 
 
