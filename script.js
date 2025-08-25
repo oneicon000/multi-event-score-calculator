@@ -8,10 +8,15 @@ function setDayScoreVisibility(show) {
   const d2 = document.getElementById("day2Score");
   if (!d1 || !d2) return;
 
-  const display = show ? "" : "none"; // "" lets CSS/layout decide (block)
-  d1.style.display = display;
-  d2.style.display = display;
+  if (show) {
+    d1.style.display = "block";
+    d2.style.display = "block";
+  } else {
+    d1.style.display = "none";
+    d2.style.display = "none";
+  }
 }
+
 
 
 function loadEvent(key) {
@@ -205,4 +210,5 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
