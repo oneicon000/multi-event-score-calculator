@@ -9,8 +9,8 @@
   <meta name="theme-color" content="#571b69">
 </head>
 
+<body>
   <main>
-    <body>
     <!-- Main Menu -->
     <div id="menu">
       <h1>Combined Event Score Calculator</h1>
@@ -46,24 +46,12 @@
     <p id="lastUpdated"></p>
   </footer>
 
-
   <script src="data.js"></script>
   <script src="script.js"></script>
-
   <script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js");
-  }
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js");
+    }
   </script>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
