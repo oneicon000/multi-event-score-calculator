@@ -82,13 +82,7 @@ button:hover {
   transform: translateY(-2px);
 }
 
-/* Back button */
-#eventPage button:first-of-type {
-  background: var(--neutral-dark);
-}
-#eventPage button:first-of-type:hover {
-  background: var(--neutral-dark-hover);
-}
+
 
 /* Table */
 table {
@@ -142,6 +136,14 @@ input[type="tel"] {
   input[type="tel"] { width: 80px; }
 }
 
+/* Back button */
+#eventPage button:first-of-type {
+  background: var(--accent);
+}
+#eventPage button:first-of-type:hover {
+  background: var(--accent-hover);
+}
+
 footer {
   text-align: center;
   margin-top: 2rem;
@@ -152,5 +154,6 @@ footer {
   font-size: 0.85rem;
   color: var(--footer-text);
 }
+
 
 
