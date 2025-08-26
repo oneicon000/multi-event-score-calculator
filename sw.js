@@ -2,6 +2,7 @@
 const CACHE_NAME = "app-cache-v3";
 
 self.addEventListener("install", (e) => {
+  self.skipWaiting(); // activate immediately
   e.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll([
@@ -27,6 +28,7 @@ self.addEventListener("activate", (e) => {
       Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
     )
   );
+  self.clients.claim(); // new SW takes control immediately
 });
 
 // Fetch from cache, fall back to network if not cached
@@ -35,4 +37,5 @@ self.addEventListener("fetch", (e) => {
     caches.match(e.request).then((response) => response || fetch(e.request))
   );
 });
+
 
