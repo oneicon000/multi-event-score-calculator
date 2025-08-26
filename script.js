@@ -177,12 +177,17 @@ function formatInput(input, format) {
 
 // After formatting... FOR THE AUTO CHANGE OF FOCUS
 if (digits.length >= maxDigits) {
+  console.log("Reached max digits for format:", format, "digits:", digits, "max:", maxDigits); // 👈 Debugging line
   const currentIndex = parseInt(input.dataset.index, 10);
   const nextInput = document.querySelector(`input[data-index="${currentIndex + 1}"]`);
   if (nextInput) {
+    console.log("Moving focus to next input with index:", currentIndex + 1); // 👈 Debugging line
     nextInput.focus();
+  } else {
+    console.log("No next input found, staying on last field."); // 👈 Debugging line
   }
-}//------------------------------------------------  
+}
+
 }
 
 function parsePerformance(str, format) {
@@ -219,6 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
 
 
