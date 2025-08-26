@@ -1,5 +1,5 @@
 // Change this version whenever you deploy new updates
-const CACHE_NAME = "app-cache-v2";
+const CACHE_NAME = "app-cache-v3";
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
@@ -35,3 +35,4 @@ self.addEventListener("fetch", (e) => {
     caches.match(e.request).then((response) => response || fetch(e.request))
   );
 });
+
