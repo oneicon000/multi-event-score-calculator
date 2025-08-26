@@ -14,7 +14,7 @@
   --table-alt-row: #f0eaf3;    /* Alternating row background inside tables */
   --table-border: #e5e7eb;     /* Table row border lines */
 
-  --footer-text: #6b7280;      /* Footer "last updated" text */
+  --footer-text: #59595A;      /* Footer "last updated" text */
 }
 
 
@@ -160,6 +160,7 @@ footer {
   color: var(--title-color);   /* same as titles so it’s visible */
   margin: 0.2rem 0;
 }
+
 
 
 
