@@ -1,21 +1,21 @@
 // Change this version whenever you deploy new updates
-const CACHE_NAME = "app-cache-v3";
+const CACHE_NAME = "app-cache-v4";
 
 self.addEventListener("install", (e) => {
   self.skipWaiting(); // activate immediately
   e.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll([
-        "/",
-        "/index.html",
-        "/style.css",
-        "/script.js",
-        "/data.js", 
-        "/manifest.json", 
-        "/maskable_icon_192x192.png",
-        "/maskable_icon_512x512.png",
-        "/icon-192.png",
-        "/icon-512.png",
+        "./",
+        "./index.html",
+        "./style.css",
+        "./script.js",
+        "./data.js", 
+        "./manifest.json", 
+        "./maskable_icon_192x192.png",
+        "./maskable_icon_512x512.png",
+        "./icon-192.png",
+        "./icon-512.png",
       ]);
     })
   );
@@ -37,5 +37,6 @@ self.addEventListener("fetch", (e) => {
     caches.match(e.request).then((response) => response || fetch(e.request))
   );
 });
+
 
 
