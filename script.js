@@ -47,7 +47,8 @@ function loadEvent(key) {
     // Input cell
     const perfCell = document.createElement("td");
     const input = document.createElement("input");
-    input.type = "tel";
+    input.type = "text";
+    input.inputMode = "decimal";
 
     // Score cell
     const scoreCell = document.createElement("td");
@@ -224,6 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
 
 
