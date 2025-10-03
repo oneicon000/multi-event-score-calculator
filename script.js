@@ -179,32 +179,33 @@ function formatInput(input, format) {
   // Middle/long races with minutes:seconds
   if (format === "M:SS.xx") {
   if (digits.length === 1) {
-    // 1 → X minutes
+    // 1 → "1"
     input.value = digits;
   } else if (digits.length === 2) {
-    // 12 → X:x0 (minutes:seconds with a 0 at end)
+    // 12 → "1:2" (looks like this, math later interprets as 1:20)
     const min = digits[0];
-    const sec = digits[1] + "0";
+    const sec = digits[1];
     input.value = `${min}:${sec}`;
   } else if (digits.length === 3) {
-    // 123 → X:xx
+    // 123 → "1:23"
     const min = digits[0];
     const sec = digits.slice(1, 3);
     input.value = `${min}:${sec}`;
   } else if (digits.length === 4) {
-    // 1234 → X:xx.x
+    // 1234 → "1:23.4"
     const min = digits[0];
     const sec = digits.slice(1, 3);
-    const hund = digits.slice(3);
+    const hund = digits[3];
     input.value = `${min}:${sec}.${hund}`;
   } else if (digits.length >= 5) {
-    // 12345 → X:xx.xx (cap at 2 decimals)
+    // 12345 → "1:23.45"
     const min = digits[0];
     const sec = digits.slice(1, 3);
     const hund = digits.slice(3, 5);
     input.value = `${min}:${sec}.${hund}`;
   }
 }
+
 
 
   // ---- Auto-move focus when max digits hit ----
@@ -230,16 +231,30 @@ function parsePerformance(str, format) {
   }
 
   if (format === "M:SS.xx") {
-    const match = str.match(/(\d+):(\d{2})\.(\d{2})/);
+    // Match minutes, seconds (1 or 2 digits), and optional hundredths
+    const match = str.match(/(\d+):(\d{1,2})(?:\.(\d{1,2}))?/);
     if (!match) return NaN;
+
     const min = parseInt(match[1]);
-    const sec = parseInt(match[2]);
-    const hund = parseInt(match[3]);
+    let sec = parseInt(match[2]);
+    let hund = match[3] ? parseInt(match[3]) : 0;
+
+    // If seconds was typed as only one digit (e.g. "1:2"), treat as "1:20"
+    if (match[2].length === 1) {
+      sec = sec * 10;
+    }
+
+    // Normalize hundredths: "4" → "40"
+    if (match[3] && match[3].length === 1) {
+      hund = hund * 10;
+    }
+
     return min * 60 + sec + hund / 100;
   }
 
   return NaN;
 }
+
 
 // "Last Updated" footer
 document.addEventListener("DOMContentLoaded", () => {
@@ -256,6 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
 
 
