@@ -163,6 +163,55 @@ footer {
 }
 
 
+/* ----------------------------------------------------------------------------------------------
+   Numeric input sizing (use last in file)
+   Targets inputs created in script.js via data-format
+   --------------------------- */
+input[data-format] {
+  box-sizing: border-box;
+  display: inline-block;        /* prevents width:100% stretch */
+  width: 6ch;                   /* default: space for ~6 characters */
+  max-width: 100%;
+  min-width: 3ch;
+  padding: 0.4rem;
+  font-size: 1.05rem;
+  border: 1px solid var(--table-border);
+  border-radius: 6px;
+  text-align: center;
+  -webkit-appearance: none;     /* normalize iOS styles */
+}
+
+/* Format-specific widths (fine-tune these if needed) */
+input[data-format="s.xx"],
+input[data-format="m.xx"] {
+  width: 4ch;   /* e.g. '9.53' or '1.95' */
+}
+
+input[data-format="ss.xx"] {
+  width: 5ch;   /* e.g. '10.53' or '123.4' */
+}
+
+input[data-format="M:SS.xx"] {
+  width: 8ch;   /* e.g. '4:35.55' */
+}
+
+/* Prevent table cell forcing a larger min width */
+#eventBody td {
+  white-space: nowrap;      /* keep label + input on one line, avoid wrapping */
+}
+
+/* Make sure inputs vertically align and don't stretch cells */
+#eventBody td input {
+  vertical-align: middle;
+}
+
+/* If still being overridden by UA/styles, uncomment the !important fallback */
+/*
+input[data-format] {
+  width: 6ch !important;
+}-------------------------------------------------------------------------------------------------------
+*/
+
 
 
 
