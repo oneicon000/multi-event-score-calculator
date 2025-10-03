@@ -152,8 +152,10 @@ function formatInput(input, format) {
 
   digits = digits.slice(0, maxDigits); // trim if too long
 
-  // Apply format
-  if (format === "ss.xx" || format === "s.xx" || format === "m.xx") {
+  // ---- Apply format ----
+
+  // Track times (seconds with decimal)
+  if (format === "ss.xx" || format === "s.xx") {
     if (digits.length >= 3) {
       input.value = digits.slice(0, -2) + "." + digits.slice(-2);
     } else {
@@ -161,6 +163,20 @@ function formatInput(input, format) {
     }
   }
 
+  // Jumps/throws measured in meters → special case
+  if (format === "m.xx") {
+    if (digits.length === 2) {
+      // Two digits → x.x
+      input.value = digits[0] + "." + digits[1];
+    } else if (digits.length >= 3) {
+      // Three digits → x.xx
+      input.value = digits.slice(0, -2) + "." + digits.slice(-2);
+    } else {
+      input.value = digits;
+    }
+  }
+
+  // Middle/long races with minutes:seconds
   if (format === "M:SS.xx") {
     if (digits.length >= 5) {
       const min = digits.slice(0, digits.length - 4);
@@ -176,20 +192,20 @@ function formatInput(input, format) {
     }
   }
 
-// After formatting... FOR THE AUTO CHANGE OF FOCUS
-if (digits.length >= maxDigits) {
-  console.log("Reached max digits for format:", format, "digits:", digits, "max:", maxDigits); // 👈 Debugging line
-  const currentIndex = parseInt(input.dataset.index, 10);
-  const nextInput = document.querySelector(`input[data-index="${currentIndex + 1}"]`);
-  if (nextInput) {
-    console.log("Moving focus to next input with index:", currentIndex + 1); // 👈 Debugging line
-    nextInput.focus();
-  } else {
-    console.log("No next input found, staying on last field."); // 👈 Debugging line
+  // ---- Auto-move focus when max digits hit ----
+  if (digits.length >= maxDigits) {
+    console.log("Reached max digits for format:", format, "digits:", digits, "max:", maxDigits); // 👈 Debug
+    const currentIndex = parseInt(input.dataset.index, 10);
+    const nextInput = document.querySelector(`input[data-index="${currentIndex + 1}"]`);
+    if (nextInput) {
+      console.log("Moving focus to next input with index:", currentIndex + 1);
+      nextInput.focus();
+    } else {
+      console.log("No next input found, staying on last field.");
+    }
   }
 }
 
-}
 
 function parsePerformance(str, format) {
   if (!str) return NaN;
@@ -225,6 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
 
 
