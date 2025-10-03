@@ -113,7 +113,8 @@ tbody tr:last-child td {
 
 /* Input boxes */
 input[type="number"] {
-  width: 75px;
+  width: 7ch;
+  max-width: 100%;
   padding: 0.4rem;
   font-size: 1.05rem;
   border: 1px solid #d1d5db;
@@ -160,6 +161,7 @@ footer {
   color: var(--title-color);   /* same as titles so it’s visible */
   margin: 0.2rem 0;
 }
+
 
 
 
