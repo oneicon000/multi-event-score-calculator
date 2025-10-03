@@ -178,19 +178,34 @@ function formatInput(input, format) {
 
   // Middle/long races with minutes:seconds
   if (format === "M:SS.xx") {
-    if (digits.length >= 5) {
-      const min = digits.slice(0, digits.length - 4);
-      const sec = digits.slice(-4, -2);
-      const hund = digits.slice(-2);
-      input.value = min + ":" + sec + "." + hund;
-    } else if (digits.length >= 3) {
-      const sec = digits.slice(0, -2);
-      const hund = digits.slice(-2);
-      input.value = sec + "." + hund;
-    } else {
-      input.value = digits;
-    }
+  if (digits.length === 1) {
+    // 1 → X minutes
+    input.value = digits;
+  } else if (digits.length === 2) {
+    // 12 → X:x0 (minutes:seconds with a 0 at end)
+    const min = digits[0];
+    const sec = digits[1] + "0";
+    input.value = `${min}:${sec}`;
+  } else if (digits.length === 3) {
+    // 123 → X:xx
+    const min = digits[0];
+    const sec = digits.slice(1, 3);
+    input.value = `${min}:${sec}`;
+  } else if (digits.length === 4) {
+    // 1234 → X:xx.x
+    const min = digits[0];
+    const sec = digits.slice(1, 3);
+    const hund = digits.slice(3);
+    input.value = `${min}:${sec}.${hund}`;
+  } else if (digits.length >= 5) {
+    // 12345 → X:xx.xx (cap at 2 decimals)
+    const min = digits[0];
+    const sec = digits.slice(1, 3);
+    const hund = digits.slice(3, 5);
+    input.value = `${min}:${sec}.${hund}`;
   }
+}
+
 
   // ---- Auto-move focus when max digits hit ----
   if (digits.length >= maxDigits) {
@@ -241,6 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
 
 
