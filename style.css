@@ -169,7 +169,7 @@ footer {
 input[data-format] {
   box-sizing: border-box;
   display: inline-block;      /* prevents stretching */
-  width: 8ch;                 /* fixed width for all inputs */
+  width: 10ch;                 /* THIS EDITS TEXT BOX WIDTH */
   max-width: 100%;
   padding: 0.4rem;
   font-size: 1.05rem;
@@ -190,6 +190,7 @@ input[data-format] {
 }
 
 /* ------------------------------------------------*/
+
 
 
 
