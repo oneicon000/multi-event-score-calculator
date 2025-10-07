@@ -159,7 +159,7 @@ function formatInput(input, format) {
   const eventName = input.closest("tr")?.querySelector("td:first-child")?.textContent?.toLowerCase() || "";
 
   // For hurdles and 200m: 3 digits → XX.x
-  if (digits.length === 3 && (eventName.includes("hurdle") || eventName.includes("200"))) {
+  if (digits.length === 3 && (eventName.includes("hurdle") || eventName.includes("200") || eventName.includes("400"))) {
     input.value = digits.slice(0, -1) + "." + digits.slice(-1);
   }
   // For everything else (100m, 60m, etc.): 3 digits → X.xx
@@ -288,6 +288,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
 
 
