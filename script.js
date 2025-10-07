@@ -231,26 +231,34 @@ function parsePerformance(str, format) {
   }
 
   if (format === "M:SS.xx") {
-    // Match minutes, seconds (1 or 2 digits), and optional hundredths
-    const match = str.match(/(\d+):(\d{1,2})(?:\.(\d{1,2}))?/);
-    if (!match) return NaN;
-
-    const min = parseInt(match[1]);
-    let sec = parseInt(match[2]);
-    let hund = match[3] ? parseInt(match[3]) : 0;
-
-    // If seconds was typed as only one digit (e.g. "1:2"), treat as "1:20"
-    if (match[2].length === 1) {
-      sec = sec * 10;
-    }
-
-    // Normalize hundredths: "4" → "40"
-    if (match[3] && match[3].length === 1) {
-      hund = hund * 10;
-    }
-
-    return min * 60 + sec + hund / 100;
+  // 👇 Add this small block:
+  if (/^\d+$/.test(str)) {
+    // If the user typed only digits (like "1"), treat it as whole minutes
+    const min = parseInt(str);
+    return min * 60;
   }
+
+  // Match minutes, seconds (1 or 2 digits), and optional hundredths
+  const match = str.match(/(\d+):(\d{1,2})(?:\.(\d{1,2}))?/);
+  if (!match) return NaN;
+
+  const min = parseInt(match[1]);
+  let sec = parseInt(match[2]);
+  let hund = match[3] ? parseInt(match[3]) : 0;
+
+  // If seconds was typed as only one digit (e.g. "1:2"), treat as "1:20"
+  if (match[2].length === 1) {
+    sec = sec * 10;
+  }
+
+  // Normalize hundredths: "4" → "40"
+  if (match[3] && match[3].length === 1) {
+    hund = hund * 10;
+  }
+
+  return min * 60 + sec + hund / 100;
+}
+
 
   return NaN;
 }
@@ -271,6 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
 
 
