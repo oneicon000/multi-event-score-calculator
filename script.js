@@ -158,6 +158,14 @@ function formatInput(input, format) {
   if (format === "ss.xx" || format === "s.xx") {
   const eventName = input.closest("tr")?.querySelector("td:first-child")?.textContent?.toLowerCase() || "";
 
+  // Special case: 60m and 60m hurdles → two digits = X.x
+  if (eventName.includes("60m")) {
+    if (digits.length === 2) {
+      input.value = digits[0] + "." + digits[1]; // 78 → 7.8
+      return; // stop here so other logic doesn't override it
+    }
+  }
+
   // For hurdles and 200m: 3 digits → XX.x
   if (digits.length === 3 && (eventName.includes("100m hurdle") || eventName.includes("110m hurdle") 
                               || eventName.includes("200") || eventName.includes("400"))) {
@@ -289,6 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
 
 
