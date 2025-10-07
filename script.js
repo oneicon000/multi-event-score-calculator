@@ -156,12 +156,21 @@ function formatInput(input, format) {
 
   // Track times (seconds with decimal)
   if (format === "ss.xx" || format === "s.xx") {
-    if (digits.length >= 3) {
-      input.value = digits.slice(0, -2) + "." + digits.slice(-2);
-    } else {
-      input.value = digits;
-    }
+  const eventName = input.closest("tr")?.querySelector("td:first-child")?.textContent?.toLowerCase() || "";
+
+  // For hurdles and 200m: 3 digits → XX.x
+  if (digits.length === 3 && (eventName.includes("hurdle") || eventName.includes("200"))) {
+    input.value = digits.slice(0, -1) + "." + digits.slice(-1);
   }
+  // For everything else (100m, 60m, etc.): 3 digits → X.xx
+  else if (digits.length >= 3) {
+    input.value = digits.slice(0, -2) + "." + digits.slice(-2);
+  }
+  else {
+    input.value = digits;
+  }
+}
+
 
   // Jumps/throws measured in meters → special case
   if (format === "m.xx") {
@@ -279,6 +288,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
 
 
