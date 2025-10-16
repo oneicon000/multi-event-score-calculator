@@ -23,20 +23,47 @@ self.addEventListener("install", (e) => {
   self.skipWaiting(); // activate immediately after install
 });
 
-// Remove old caches when activating new service worker
+// Activate new service worker and clean old caches
 self.addEventListener("activate", (e) => {
   e.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
-    )
+    (async () => {
+      const keys = await caches.keys();
+      await Promise.all(
+        keys
+          .filter((key) => key !== CACHE_NAME)
+          .map((key) => caches.delete(key))
+      );
+      await self.clients.claim(); // take control immediately
+      console.log("[ServiceWorker] Activated and cleaned old caches");
+    })()
   );
-  self.clients.claim(); // new SW takes control immediately
 });
 
-// Fetch from cache, fall back to network if not cached
+// Fetch handler – Cache First, then Network Fallback
 self.addEventListener("fetch", (e) => {
+  // Don’t cache non-GET requests or chrome-extension requests
+  if (e.request.method !== "GET" || e.request.url.startsWith("chrome-extension")) {
+    return;
+  }
+
   e.respondWith(
-    caches.match(e.request).then((response) => response || fetch(e.request))
+    caches.match(e.request).then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse; // serve from cache
+      }
+
+      // Otherwise, fetch from network and cache the new response
+      return fetch(e.request)
+        .then((response) => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone));
+          return response;
+        })
+        .catch(() => {
+          // Optionally: return a fallback page or message when offline
+          return caches.match("/index.html");
+        });
+    })
   );
 });
 
