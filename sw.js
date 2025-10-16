@@ -6,7 +6,7 @@ self.addEventListener("install", (e) => {
   e.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll([
-        "./",
+        "/",
         "/index.html?v=5",   // add ?v=version to force update
         "./index.html",
         "./style.css",
@@ -39,6 +39,7 @@ self.addEventListener("fetch", (e) => {
     caches.match(e.request).then((response) => response || fetch(e.request))
   );
 });
+
 
 
 
