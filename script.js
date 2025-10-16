@@ -47,8 +47,11 @@ function loadEvent(key) {
     // Input cell
     const perfCell = document.createElement("td");
     const input = document.createElement("input");
-    input.type = "text";
-    input.inputMode = "decimal";
+
+    // 👇 main changes here
+    input.type = "text";            // use text instead of number/tel
+    input.inputMode = "decimal";    // numeric keypad
+    input.enterKeyHint = "next";    // shows “Next” button on iPhone keyboard
 
     // Score cell
     const scoreCell = document.createElement("td");
@@ -78,6 +81,7 @@ function loadEvent(key) {
   // Reset totals when event loads
   updateScores(currentEventType);
 }
+
 
 function goBack() {
   document.getElementById("menu").style.display = "block";
@@ -297,6 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
 
 
