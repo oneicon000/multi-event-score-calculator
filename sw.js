@@ -1,5 +1,5 @@
 // Change this version whenever you deploy new updates
-const CACHE_NAME = "app-cache-v4";
+const CACHE_NAME = "app-cache-v5";
 
 self.addEventListener("install", (e) => {
   self.skipWaiting(); // activate immediately
@@ -7,6 +7,7 @@ self.addEventListener("install", (e) => {
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll([
         "./",
+        "/index.html?v=5",   // add ?v=version to force update
         "./index.html",
         "./style.css",
         "./script.js",
@@ -19,6 +20,7 @@ self.addEventListener("install", (e) => {
       ]);
     })
   );
+  self.skipWaiting(); // activate immediately after install
 });
 
 // Remove old caches when activating new service worker
@@ -37,6 +39,7 @@ self.addEventListener("fetch", (e) => {
     caches.match(e.request).then((response) => response || fetch(e.request))
   );
 });
+
 
 
 
