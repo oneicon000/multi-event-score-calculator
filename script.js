@@ -67,6 +67,23 @@ function loadEvent(key) {
       updateScores(currentEventType);
     };
 
+    // Handle Enter / Next key press (for iPhone keyboard)
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault(); // prevent accidental form submission
+    
+        const currentIndex = parseInt(input.dataset.index, 10);
+        const nextInput = document.querySelector(`input[data-index="${currentIndex + 1}"]`);
+    
+        if (nextInput) {
+          nextInput.focus(); // move to next field
+        } else {
+          input.blur(); // if last field, close keyboard
+        }
+      }
+    });
+
+
     // Store metadata
     input.dataset.index = idx;
     input.dataset.format = ev.format;
@@ -301,6 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = "Last updated: " + modified.toLocaleString(undefined, options);
   }
 });
+
 
 
 
