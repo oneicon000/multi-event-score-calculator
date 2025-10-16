@@ -1,5 +1,5 @@
 // Change this version whenever you deploy new updates
-const CACHE_NAME = "app-cache-v5";
+const CACHE_NAME = "app-cache-v6";
 
 self.addEventListener("install", (e) => {
   self.skipWaiting(); // activate immediately
@@ -66,6 +66,7 @@ self.addEventListener("fetch", (e) => {
     })
   );
 });
+
 
 
 
