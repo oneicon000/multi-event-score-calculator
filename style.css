@@ -52,7 +52,7 @@ h1, h2, h3 {
   color: var(--title-color);
 }
 h1 { font-size: 2rem; margin-bottom: 1.5rem; }
-h2 { margin: 1rem 0; font-size: 1.6rem; }
+h2 { margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.6rem; }
 h3 { margin-top: 1rem; font-size: 1.3rem; }
 
 /* Buttons */
@@ -78,26 +78,29 @@ button:hover {
 /* Top-left back button */
 #backButton {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background: var(--accent);             /* match your main purple theme */
-  color: white;
+  top: 0.6rem;
+  left: 0.6rem;
+  background: transparent;     /* blends into header area */
+  color: var(--title-color);   /* matches title text color */
   border: none;
-  border-radius: 8px;
-  padding: 0.45rem 0.9rem;
-  font-size: 0.95rem;
-  font-weight: 600;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 2rem;
   cursor: pointer;
-  z-index: 10;
-
-  /* 💥 These two lines force iOS to respect your styling */
-  -webkit-appearance: none;
-  appearance: none;
-
-  /* Optional: subtle shadow and animation */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  text-align: center;
+  z-index: 5;
   transition: background 0.2s ease, transform 0.1s ease;
 }
+
+#backButton:hover {
+  background: rgba(255,255,255,0.15); /* subtle circle highlight */
+  transform: translateY(-1px);
+}
+
+
 
 #backButton:hover {
   background: var(--accent-hover);
@@ -184,4 +187,5 @@ footer {
   th, td { padding: 0.5rem; font-size: 0.95rem; }
   input[data-format] { width: 8ch; }
 }
+
 
