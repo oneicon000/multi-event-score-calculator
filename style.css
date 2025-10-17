@@ -55,14 +55,14 @@ h1 { font-size: 2rem; margin-bottom: 1.5rem; }
 h2 { margin-top: 2rem; margin-bottom: 1rem; font-size: 1.6rem; }
 h3 { margin-top: 1rem; font-size: 1.3rem; }
 
-/* Event page header container */
+/* Event page header container 
 .event-header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 0.6rem;
   padding: 0rem 0.5rem 0 0.5rem;
-}
+}*/
 
 /* Back button styling inside the header */
 #backButton {
@@ -221,6 +221,7 @@ footer {
   th, td { padding: 0.5rem; font-size: 0.95rem; }
   input[data-format] { width: 8ch; }
 }
+
 
 
 
