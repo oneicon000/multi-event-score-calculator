@@ -67,7 +67,7 @@ h3 { margin-top: 1rem; font-size: 1.3rem; }
 /* Back button styling inside the header */
 #backButton {
   position: absolute;         /* Take it out of normal flow — lets us position freely */
-  top: 0rem;                /* Vertical distance from the top edge of #eventPage */
+  top: -2.0rem;                /* Vertical distance from the top edge of #eventPage */
   left: 0.8rem;               /* Horizontal distance from the left edge of #eventPage */
   
   width: 50px;                     /* Sets the total horizontal size of the button */
@@ -221,6 +221,7 @@ footer {
   th, td { padding: 0.5rem; font-size: 0.95rem; }
   input[data-format] { width: 8ch; }
 }
+
 
 
 
