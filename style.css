@@ -65,7 +65,7 @@ h3 { margin-top: 1rem; font-size: 1.3rem; }
 }
 
 /* Back button styling inside the header */
-backButton {
+#backButton {
   width: 35px;
   height: 25px;
   background: var(--accent);
@@ -73,15 +73,15 @@ backButton {
   border: none;
   border-radius: 6px;
   padding: 0.25rem 0.6rem;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 2rem;
+  font-weight: 1000;
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   transition: background 0.2s ease, transform 0.1s ease;
   float: left;
 }
 
-backButton:hover {
+#backButton:hover {
   background: var(--accent-hover);
   transform: translateY(-1px);
 }
@@ -195,6 +195,7 @@ footer {
   th, td { padding: 0.5rem; font-size: 0.95rem; }
   input[data-format] { width: 8ch; }
 }
+
 
 
 
