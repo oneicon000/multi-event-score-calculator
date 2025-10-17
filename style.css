@@ -55,6 +55,43 @@ h1 { font-size: 2rem; margin-bottom: 1.5rem; }
 h2 { margin-top: 2rem; margin-bottom: 1rem; font-size: 1.6rem; }
 h3 { margin-top: 1rem; font-size: 1.3rem; }
 
+/* Event page header container */
+.event-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  padding: 0.5rem 0.5rem 0 0.5rem;
+}
+
+/* Back button styling inside the header */
+#backButton {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+#backButton:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+/* Make sure the title stays centered even with back button */
+.event-header h2 {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--title-color);
+}
+
 /* Buttons */
 button {
   display: block;
@@ -74,32 +111,6 @@ button:hover {
   background: var(--accent-hover);
   transform: translateY(-2px);
 }
-
-/* Top-left back button */
-#backButton {
-  position: absolute;
-  top: 0.2rem;
-  left: 0.3rem;
-  background: var(--accent);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 0.25rem 0.6rem;   /* smaller padding */
-  font-size: 0.8rem;         /* smaller text */
-  font-weight: 600;
-  cursor: pointer;
-  z-index: 5;                /* enough to stay visible, but not covering title */
-  -webkit-appearance: none;
-  appearance: none;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  transition: background 0.2s ease, transform 0.1s ease;
-}
-
-#backButton:hover {
-  background: var(--accent-hover);
-  transform: translateY(-1px);
-}
-
 
 
 /* Table */
@@ -181,6 +192,7 @@ footer {
   th, td { padding: 0.5rem; font-size: 0.95rem; }
   input[data-format] { width: 8ch; }
 }
+
 
 
 
