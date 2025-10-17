@@ -66,7 +66,8 @@ h3 { margin-top: 1rem; font-size: 1.3rem; }
 
 /* Back button styling inside the header */
 #backButton {
-  width: 15%;
+  width: 15px;
+  height: 15px;
   background: var(--accent);
   color: white;
   border: none;
@@ -193,6 +194,7 @@ footer {
   th, td { padding: 0.5rem; font-size: 0.95rem; }
   input[data-format] { width: 8ch; }
 }
+
 
 
 
