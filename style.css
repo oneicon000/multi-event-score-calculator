@@ -78,34 +78,28 @@ button:hover {
 /* Top-left back button */
 #backButton {
   position: absolute;
-  top: 0.6rem;
-  left: 0.6rem;
-  background: transparent;     /* blends into header area */
-  color: var(--title-color);   /* matches title text color */
+  top: 0.5rem;
+  left: 0.5rem;
+  background: var(--accent);
+  color: white;
   border: none;
-  border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
-  font-size: 1.4rem;
-  font-weight: bold;
-  line-height: 2rem;
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;   /* smaller padding */
+  font-size: 0.8rem;         /* smaller text */
+  font-weight: 600;
   cursor: pointer;
-  text-align: center;
-  z-index: 5;
+  z-index: 5;                /* enough to stay visible, but not covering title */
+  -webkit-appearance: none;
+  appearance: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   transition: background 0.2s ease, transform 0.1s ease;
 }
 
 #backButton:hover {
-  background: rgba(255,255,255,0.15); /* subtle circle highlight */
+  background: var(--accent-hover);
   transform: translateY(-1px);
 }
 
-
-
-#backButton:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-}
 
 
 /* Table */
@@ -187,5 +181,6 @@ footer {
   th, td { padding: 0.5rem; font-size: 0.95rem; }
   input[data-format] { width: 8ch; }
 }
+
 
 
