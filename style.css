@@ -1,22 +1,21 @@
 /* Define color variables */
 :root {
-  --bg-color: #59595A;         /* Main page background */
-  --text-color: #222;          /* Default text color (body text, table cells, etc.) */
+  --bg-color: #59595A;
+  --text-color: #222;
   --title-color: #F3EEF5;
 
-  --accent: #571b69;           /* Main accent color (titles, buttons, table header, total score) */
-  --accent-hover: #6e2286;     /* Hover state for accent buttons */
+  --accent: #571b69;
+  --accent-hover: #6e2286;
 
-  --neutral-dark: #6b7280;     /* Back button color */
-  --neutral-dark-hover: #4b5563; /* Back button hover color */
+  --neutral-dark: #6b7280;
+  --neutral-dark-hover: #4b5563;
 
-  --table-bg: #ffffff;         /* Table background */
-  --table-alt-row: #f0eaf3;    /* Alternating row background inside tables */
-  --table-border: #e5e7eb;     /* Table row border lines */
+  --table-bg: #ffffff;
+  --table-alt-row: #f0eaf3;
+  --table-border: #e5e7eb;
 
-  --footer-text: #59595A;      /* Footer "last updated" text */
+  --footer-text: #bfbfbf;
 }
-
 
 /* Reset & base styles */
 body {
@@ -27,12 +26,12 @@ body {
   display: flex;
   justify-content: center;
   padding: 1rem;
-  flex-direction: column;   
-  min-height: 92vh;        
+  flex-direction: column;
+  min-height: 92vh;
 }
 
 main {
-  flex: 1;                  
+  flex: 1;
   display: flex;
   justify-content: center;
   padding: 1rem;
@@ -49,21 +48,12 @@ main {
 }
 
 /* Headings */
-h1 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
+h1, h2, h3 {
   color: var(--title-color);
 }
-h2 {
-  margin: 1rem 0;
-  font-size: 1.6rem;
-  color: var(--title-color);
-}
-h3 { /*total score text */
-  margin-top: 1rem;
-  font-size: 1.3rem;
-  color: var(--title-color);
-}
+h1 { font-size: 2rem; margin-bottom: 1.5rem; }
+h2 { margin: 1rem 0; font-size: 1.6rem; }
+h3 { margin-top: 1rem; font-size: 1.3rem; }
 
 /* Buttons */
 button {
@@ -97,15 +87,13 @@ button:hover {
   padding: 0.4rem 0.8rem;
   font-size: 0.9rem;
   cursor: pointer;
-  z-index: 10; /* keeps it above other elements */
+  z-index: 10;
   transition: background 0.2s ease, transform 0.1s ease;
 }
-
 #backButton:hover {
   background: var(--neutral-dark-hover);
   transform: translateY(-2px);
 }
-
 
 /* Table */
 table {
@@ -134,16 +122,26 @@ tbody tr:last-child td {
   border-bottom: none;
 }
 
-/* Input boxes 
-input[type="number"] {
-  width: 7ch;
-  max-width: 100%;
+/* Inputs */
+input[data-format] {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 10ch;
   padding: 0.4rem;
   font-size: 1.05rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--table-border);
   border-radius: 6px;
   text-align: center;
-} delete this if nothing breaks */
+  -webkit-appearance: none;
+}
+
+/* Prevent table cell stretching */
+#eventBody td {
+  white-space: nowrap;
+}
+#eventBody td input {
+  vertical-align: middle;
+}
 
 /* Total score */
 #totalScore {
@@ -152,69 +150,27 @@ input[type="number"] {
   font-size: 1.2rem;
 }
 
-/* Mobile tweaks */
-@media (max-width: 600px) {
-  h1 { font-size: 1.6rem; }
-  button { font-size: 1rem; padding: 0.7rem; }
-  th, td { padding: 0.5rem; font-size: 0.95rem; }
-  input[type="tel"] { width: 80px; }
+#day1Score, #day2Score {
+  font-size: 1rem;
+  color: var(--title-color);
+  margin: 0.2rem 0;
 }
 
-
+/* Footer */
 footer {
   text-align: center;
   margin-top: 2rem;
   padding: 1rem 0;
 }
-
 #lastUpdated {
   font-size: 0.85rem;
   color: var(--footer-text);
 }
 
-#day1Score, #day2Score {
-  font-size: 1rem;
-  color: var(--title-color);   /* same as titles so it’s visible */
-  margin: 0.2rem 0;
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  h1 { font-size: 1.6rem; }
+  button { font-size: 1rem; padding: 0.7rem; }
+  th, td { padding: 0.5rem; font-size: 0.95rem; }
+  input[data-format] { width: 8ch; }
 }
-
-
-/* ---------------------------______________________________________________
-   Uniform numeric input sizing
-   --------------------------- */
-input[data-format] {
-  box-sizing: border-box;
-  display: inline-block;      /* prevents stretching */
-  width: 10ch;                 /* THIS EDITS TEXT BOX WIDTH */
-  max-width: 100%;
-  padding: 0.4rem;
-  font-size: 1.05rem;
-  border: 1px solid var(--table-border);
-  border-radius: 6px;
-  text-align: center;
-  -webkit-appearance: none;   /* normalize iOS styles */
-}
-
-/* Prevent table cell forcing a larger min width */
-#eventBody td {
-  white-space: nowrap;
-}
-
-/* Align inputs neatly inside cells */
-#eventBody td input {
-  vertical-align: middle;
-}
-
-/* ------------------------------------------------*/
-
-
-
-
-
-
-
-
-
-
-
-
