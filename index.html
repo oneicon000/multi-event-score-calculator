@@ -22,8 +22,11 @@
   
     <!-- Event Page Template (hidden until chosen) -->
     <div id="eventPage" style="display:none;">
-      <button id="backButton" onclick="goBack()">← Back</button>
-      <h2 id="eventTitle"></h2>
+      <div class="event-header">
+        <button id="backButton" onclick="goBack()">←</button>
+        <h2 id="eventTitle"></h2>
+      </div>
+
       <table id="eventTable">
         <thead>
           <tr>
@@ -55,6 +58,7 @@
   </script>
 </body>
 </html>
+
 
 
 
