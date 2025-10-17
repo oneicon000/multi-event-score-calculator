@@ -66,8 +66,13 @@ h3 { margin-top: 1rem; font-size: 1.3rem; }
 
 /* Back button styling inside the header */
 #backButton {
+  position: absolute;         /* Take it out of normal flow — lets us position freely */
+  top: 0.8rem;                /* Vertical distance from the top edge of #eventPage */
+  left: 0.8rem;               /* Horizontal distance from the left edge of #eventPage */
+  
   width: 50px;                     /* Sets the total horizontal size of the button */
   height: 30px;                    /* Sets the total vertical size of the button */
+  margion-bottom: .25rem;
 
   background: var(--accent);       /* Fills the button with your accent color (purple) */
   color: white;                    /* Sets the color of the text or arrow inside the button */
@@ -96,7 +101,8 @@ h3 { margin-top: 1rem; font-size: 1.3rem; }
                                    /* Smoothly animates background color and position
                                       when the user hovers or presses the button. */
 
-  float: left;                     /* Positions the button on the left side of its container.
+  /* commented out cus absolute positioning
+  float: left;                      Positions the button on the left side of its container.
                                       Text or elements after it will flow around it to the right. */
 }
 
@@ -215,6 +221,7 @@ footer {
   th, td { padding: 0.5rem; font-size: 0.95rem; }
   input[data-format] { width: 8ch; }
 }
+
 
 
 
