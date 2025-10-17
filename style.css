@@ -66,25 +66,45 @@ h3 { margin-top: 1rem; font-size: 1.3rem; }
 
 /* Back button styling inside the header */
 #backButton {
-  width: 40px;
-  height: 25px;
-  background: var(--accent);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 0.25rem 0.25rem;
-  font-size: 1.1rem;
-  font-weight: 800;
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  width: 50px;                     /* Sets the total horizontal size of the button */
+  height: 30px;                    /* Sets the total vertical size of the button */
+
+  background: var(--accent);       /* Fills the button with your accent color (purple) */
+  color: white;                    /* Sets the color of the text or arrow inside the button */
+
+  border: none;                    /* Removes the default browser border */
+  border-radius: 6px;              /* Rounds the corners slightly (6px curve on all sides) */
+
+  padding: 0.0rem 0.0rem;        /* Adds inner space INSIDE the button, around the text.
+                                      - First value = top/bottom padding (0.25rem)
+                                      - Second value = left/right padding (0.25rem)
+                                      Increasing padding makes the button’s clickable area larger. */
+
+  font-size: 1.2rem;               /* Sets the size of the text (or arrow) inside the button */
+  font-weight: 800;                /* Makes the text bold — “800” is extra bold */
+
+  cursor: pointer;                 /* Changes the mouse cursor to a hand on hover (visual cue it’s clickable) */
+
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);  
+                                   /* Adds a subtle shadow below the button for depth.
+                                      - First number (0) = horizontal offset (no sideways shift)
+                                      - Second number (1px) = vertical offset (shadow appears slightly below)
+                                      - Third (3px) = blur amount (softness)
+                                      - RGBA sets color and transparency (20% opacity black). */
+
   transition: background 0.2s ease, transform 0.1s ease;
-  float: left;
+                                   /* Smoothly animates background color and position
+                                      when the user hovers or presses the button. */
+
+  float: left;                     /* Positions the button on the left side of its container.
+                                      Text or elements after it will flow around it to the right. */
 }
 
 #backButton:hover {
-  background: var(--accent-hover);
-  transform: translateY(-1px);
+  background: var(--accent-hover); /* Slightly changes the color when hovered (from purple to lighter purple) */
+  transform: translateY(-1px);     /* Moves the button upward by 1px for a “lifted” hover effect */
 }
+
 
 /* Make sure the title stays centered even with back button */
 .event-header h2 {
@@ -195,6 +215,7 @@ footer {
   th, td { padding: 0.5rem; font-size: 0.95rem; }
   input[data-format] { width: 8ch; }
 }
+
 
 
 
