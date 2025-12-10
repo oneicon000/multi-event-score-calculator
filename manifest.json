@@ -1,7 +1,7 @@
 {
   "name": "Multi-Event Score Calculator",
   "short_name": "Multi Score",
-  "start_url": "/",
+  "start_url": "/oneicon000.github.io/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2563eb",
@@ -20,6 +20,7 @@
     }
   ]
 }
+
 
 
 
