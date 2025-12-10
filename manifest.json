@@ -1,8 +1,7 @@
 {
   "name": "Multi-Event Score Calculator",
   "short_name": "Multi Score",
-  "start_url": "/multi-event-score-calculator/index.html",
-  "scope": "/multi-event-score-calculator/",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2563eb",
@@ -19,6 +18,7 @@
     }
   ]
 }
+
 
 
 
